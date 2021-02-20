@@ -1,7 +1,7 @@
 # Case-study #4
-# Developers:   Aksenov A. (%),
-#               Soloveychik D. (%),
-#               Labuzov A. (%)
+# Developers:   Aksenov A. (44%),
+#               Soloveychik D. (42%),
+#               Labuzov A. (43%)
 from textblob import TextBlob
 text=input("Введите текст:").lower()
 a=0

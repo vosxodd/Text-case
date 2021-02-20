@@ -2,6 +2,7 @@
 # Developers:   Aksenov A. (%),
 #               Soloveychik D. (%),
 #               Labuzov A. (%)
+from textblob import TextBlob
 text=input("Введите текст:").lower()
 a=0
 print("Предложений:",text.count(".")+text.count("!")+text.count("?")+text.count("..."))
@@ -29,3 +30,15 @@ elif FRE>50 and FRE<=80:
     print("Простой текст (для школьников).")
 else:
     print("Текст очень легко читается (для младших школьников).")
+lang=TextBlob(text).detect_language()
+if lang!="en":
+    text = str(TextBlob(text).translate(to="en"))
+pol = TextBlob(text).polarity
+if -1<=pol<=-0.5:
+    print("Тональность текста: негативный")
+elif -0.5<pol<=0.5:
+    print("Тональность текста: нейтральный")
+elif 0.5<pol<=1:
+    print("Тональность текста: позитивный")
+obj = (1-TextBlob(text).sentiment.subjectivity)
+print("Объективность:",obj*100,"%")
